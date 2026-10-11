@@ -38,16 +38,11 @@ document's root carries one, set before the first frame by `@canmi/design/theme`
 reader's cookie or their system and moved by its `applyTheme`; any element below may carry the
 other, and every token inside it takes that theme's value. A style declares its light on the root
 and on `[data-theme='light']` and its dark over it on `[data-theme='dark']`, its palette too,
-**every name declared again on each mark**, since a name made of others is worked out where it is
-declared. There is no `.dark` class: the kit's `.dark` stays with the kit and the apps still on it
--- [../kit/theme.md](../kit/theme.md) -- and an app on the system marks its root as the system does.
-Settled with the author on 2026-10-11.
+**every name declared again on each mark**. There is no `.dark` class: the kit's `.dark` stays with
+the kit and the apps still on it -- [../kit/theme.md](../kit/theme.md).
 
 **A component reads tokens and never asks which theme it is in**: no `dark:` variant, no branch on
-the mark. A theme is nothing but the tokens' values, so a component placed in a part held in the
-other theme is right there with no case of its own. A variant keyed on an ancestor's mark cannot be,
-since a selector cannot ask for the nearest of two marks; the system's own pages are where that
-matters, where one specimen may hold both themes side by side.
+the mark. Why one mark and not a second set of names, or the class beside it, is RFC mvplj.
 
 ## How a name is made
 
