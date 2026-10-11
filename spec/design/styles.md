@@ -147,16 +147,10 @@ Lc 80 and 93 and the dark's near 33 and 51, the dark's secondary text under what
 light's `default` sat at the light's most, beside `strong`. Set with the author on 2026-10-11.
 
 **A hue is drawn as graphics, and is set in OKHSL: saturation 100 in both themes, and its lightness
-9 deeper in the dark than in the light.** OKHSL's saturation is a share of the most chroma the
-screen shows at that hue and lightness, so 100 is the hue at its purest whatever its lightness,
-which oklch's absolute chroma cannot say; the dark's lightness is the author's per hue. In mono
+9 deeper in the dark than in the light.** The dark's lightness is chosen per hue: in mono
 information is OKHSL lightness 50.8 at 258.6 in the dark, success 58.9 at 147.2, critical 56.5 at
 23.1, each 9 lighter in the light. **Warning is the one exception: one value in both themes**, 79.1
-at 76, since a yellow already at its brightest pure point turns cream when lifted. The lift first
-went the other way, the dark 9 lighter, after Geist's palette; set side by side, the dark read right
-with the deeper hues and the light with the brighter. Contrast was tried as the generator before
-either, a single APCA target per theme, and lost each hue's own lightness: yellow went brown and red
-pink. Set with the author on 2026-10-11.
+at 76. Why, and what was tried first, is RFC b0i0r.
 
 ## Who is on it
 
