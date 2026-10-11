@@ -71,18 +71,11 @@ CSS's `cap` unit should give and Chrome does not read right from this sans. It n
 since another face's capitals stand at another height.
 
 **The focus ring is information's hue at full OKHSL saturation, a shade darker than
-`--status-info` in either theme, APCA Lc 5**, counted before APCA's clip at 10: a shade apart, not a
-second blue, so a ring drawn on a blue mark still reads as a ring. In mono `oklch(0.626 0.203
-258.6)` in the light and `oklch(0.543 0.207 258.6)` in the dark. It is told apart by its lightness,
-not by a gap around it. Lc 25 and 15 were tried first and stood too far off; a light shade lighter
-than information's, toward the ground, left the pair twice as far apart as any other hue's. **There is no `--accent`**: what was the system's own and live is
-information's blue, held by `--status-info` as every other status holds its hue. Settled with the
-author on 2026-10-11.
-
+`--status-info` in either theme, APCA Lc 5**, counted before APCA's clip at 10: in mono
+`oklch(0.626 0.203 258.6)` in the light and `oklch(0.543 0.207 258.6)` in the dark. **There is no
+`--accent`**: information's blue is held by `--status-info` as every other status holds its hue.
 **A selection is drawn as focus is**: `--interaction-focus` solid, with white on it, declared by the
-style on `::selection`, since a selection is the reader's own choice as focus is. Mono's palette
-kept Geist's, the ramp's far end under the text, which went gray in the light and in the dark alike.
-Settled with the author on 2026-10-11.
+style on `::selection`. Why, and what was tried first, is RFC qb7r9.
 
 ## The scale
 
