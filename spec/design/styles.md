@@ -127,9 +127,7 @@ something chosen stands among what can be pointed at, the chosen takes `muted` a
 ic4cd.
 
 **A border is the text's own color laid thin too, by the same ratio**: `subtle` the ranks' full
-strength, `default` 9 percent in the dark and `strong` 24, the light's each over 1.4. Each was a
-gray or a share of its own before, `default` 8 and 9 percent and `strong` two palette grays, so the
-light's borders stood nearly as heavy as the dark's. Set with the author on 2026-10-11.
+strength, `default` 9 percent in the dark and `strong` 24, the light's each over 1.4 -- RFC h27v0.
 
 **Text is set by its APCA contrast on a surface, one target per tier in both themes**: `subtle` Lc
 60, `muted` 75, `default` 90, `strong` the most there is, black or white, and each theme's lightness
