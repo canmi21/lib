@@ -104,11 +104,10 @@ one tint of the foreground, `--interaction-tint`, at `--interaction-strength` an
 
 **A surface is a step lighter than the base in both themes, and the light's step is the dark's over
 the ratio.** The dark's base is black and its surface 10 levels above it; the light's surface is
-white and its base 7 levels under, `oklch(0.979 0 0)`, where mono's palette page stood 5 under and
-read as a smaller step than the dark's. Regions follow the step -- a card, the shell's top bar and
-its sidebar -- and what is set into a region, a field or a framed button, stands on the base again.
-States follow the text, below. **A surface casts no shadow in either theme**: it stands off the base
-by its ground and its border alone, the same way in both. Set with the author on 2026-10-11.
+white and its base 7 levels under, `oklch(0.979 0 0)`. Regions take the surface -- a card, the
+shell's top bar and its sidebar -- and what is set into a region, a field or a framed button, stands
+on the base again. **A surface casts no shadow in either theme.** Why, and what was tried first, is
+RFC c656n.
 
 **Two grounds, and every other ground an interaction rank laid over one of them.** A ground that is
 neither the page nor a card -- a hover, a selection, a control's fill, a skeleton -- is a rank: the
