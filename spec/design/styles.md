@@ -111,11 +111,9 @@ States follow the text, below. **A surface casts no shadow in either theme**: it
 by its ground and its border alone, the same way in both. Set with the author on 2026-10-11.
 
 **Two grounds, and every other ground an interaction rank laid over one of them.** A ground that is
-neither the page nor a card -- a hover, a selection, a control's fill, a skeleton -- is not a gray
-of its own but a rank: the text's own color laid thin, so it leaves whatever it lies on toward the
-text in either theme, where a fixed gray lighter than a white card would sink back toward the page.
-A rank is translucent, so it adapts to the ground under it. A component takes a rank, never a share.
-The ranks in mono are shares of one strength:
+neither the page nor a card -- a hover, a selection, a control's fill, a skeleton -- is a rank: the
+text's own color laid thin, translucent, so it adapts to the ground under it. A component takes a
+rank, never a share. The ranks in mono are shares of one strength:
 
 | rank      | light | dark |
 | --------- | ----- | ---- |
@@ -124,14 +122,10 @@ The ranks in mono are shares of one strength:
 | `default` | 1     | 1    |
 | `strong`  | 1.5   | 1.5  |
 
-**The dark's strength, 7 percent, is the reference, and the light's is it over
-`--interaction-ratio`, 1.4**, since near black a share reads larger: one rank is one visual weight
-in both themes. The light holds `muted` further off `subtle`, where the two would otherwise read as
-one. **Where something chosen stands among what can be pointed at, the chosen takes `muted` and the
-hover `subtle`; where only a hover shows, it takes `default`.** `inset` and `raised` were dropped
-for this on 2026-10-11, with the author: `inset` had the base's value in both themes, and `raised`
-was a gray darker than the light's base, so a hover on a white field sank toward the page. Ranks and
-names settled with the author on 2026-10-11.
+**The dark's strength is 7 percent, and the light's is it over `--interaction-ratio`, 1.4.** **Where
+something chosen stands among what can be pointed at, the chosen takes `muted` and the hover
+`subtle`; where only a hover shows, it takes `default`.** Why, and what was tried first, is RFC
+ic4cd.
 
 **A border is the text's own color laid thin too, by the same ratio**: `subtle` the ranks' full
 strength, `default` 9 percent in the dark and `strong` 24, the light's each over 1.4. Each was a
