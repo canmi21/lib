@@ -1,7 +1,6 @@
 # Roadmap
 
-Where the library is going, without the steps. What is decided and waiting is [todo.md](todo.md), and
-what is open is [issues.md](issues.md); how the three divide the work is the workspace's
+Where the library is going, without the steps. What is not done is an RFC -- the workspace's
 `spec/planning.md`.
 
 - **A package proves itself in production before it is published**, and then joins this repository --

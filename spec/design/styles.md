@@ -12,7 +12,7 @@ and half of it is a foundation the other half's behavior has nothing to do with.
 move every app that depends on it at once, so the new system is a package of its own instead, the
 console and space move to it first, and each other consumer moves when there is time -- the site
 and the CMS are web's `spec/issues/site.md` and `spec/issues/cms.md`. Kit is deprecated once
-nothing reads it. What `@canmi/design` needs of kit's it takes as its own, so it depends on none of
+nothing reads it -- RFC vnxej. What `@canmi/design` needs of kit's it takes as its own, so it depends on none of
 it: mono's palette was copied rather than imported.
 
 ## A component reads a role, and a style gives every role a value
@@ -51,15 +51,15 @@ there. Where a group ranks its roles, the ranks are one scale for every group: `
 `default`, `strong`. Every word is the full word, and none is a component's: a name says what a
 value is for, not who first wanted it.
 
-| group         | names                                                                                              |
-| ------------- | -------------------------------------------------------------------------------------------------- |
-| `background`  | `base`, under everything; `surface`, a card on it                                                 |
-| `border`      | `subtle`, `default`, `strong`                                                                      |
-| `foreground`  | `subtle`, `muted`, `default`, `strong`: text, and the icons and marks drawn as text is             |
-| `interaction` | `subtle`, `muted`, `default`, `strong`: ranks of one tint, laid over a ground; and `focus`         |
-| `status`      | `success`, `info`, `warning`, `critical`                                                           |
-| `shadow`      | `surface`, the shadow a surface casts, `none` in mono                                              |
-| `font`        | `sans`, `mono`, and `sans-cap-height`                                                              |
+| group         | names                                                                                      |
+| ------------- | ------------------------------------------------------------------------------------------ |
+| `background`  | `base`, under everything; `surface`, a card on it                                          |
+| `border`      | `subtle`, `default`, `strong`                                                              |
+| `foreground`  | `subtle`, `muted`, `default`, `strong`: text, and the icons and marks drawn as text is     |
+| `interaction` | `subtle`, `muted`, `default`, `strong`: ranks of one tint, laid over a ground; and `focus` |
+| `status`      | `success`, `info`, `warning`, `critical`                                                   |
+| `shadow`      | `surface`, the shadow a surface casts, `none` in mono                                      |
+| `font`        | `sans`, `mono`, and `sans-cap-height`                                                      |
 
 **`--font-sans-cap-height` is the sans's capital height**, `H` from its baseline to its top, what
 CSS's `cap` unit should give and Chrome does not read right from this sans. It names its font,

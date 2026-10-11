@@ -11,8 +11,7 @@ Unit tests live beside their code in `#[cfg(test)] mod tests` blocks; integratio
 ## Coverage target
 
 95% line coverage is the workspace's target for every project, and not yet reached here or anywhere
-else -- the workspace's `spec/issues.md`, "Every project is to reach 95% line coverage, and none is
-measured against it yet", which also holds how this crate reads the number.
+else -- RFC 7m5v0, which also holds how this crate reads the number.
 
 ## What to cover
 
