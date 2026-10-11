@@ -131,11 +131,7 @@ strength, `default` 9 percent in the dark and `strong` 24, the light's each over
 
 **Text is set by its APCA contrast on a surface, one target per tier in both themes**: `subtle` Lc
 60, `muted` 75, `default` 90, `strong` the most there is, black or white, and each theme's lightness
-worked back from the target. APCA weighs a light text on a dark ground apart from a dark one on a
-light ground, which is the difference the eye makes and the ratio above cannot, since text stands
-far off its ground where a rank stands close. Mono's palette text had the light's lower tiers near
-Lc 80 and 93 and the dark's near 33 and 51, the dark's secondary text under what a label needs; the
-light's `default` sat at the light's most, beside `strong`. Set with the author on 2026-10-11.
+worked back from the target -- RFC yvws0.
 
 **A hue is drawn as graphics, and is set in OKHSL: saturation 100 in both themes, and its lightness
 9 deeper in the dark than in the light.** The dark's lightness is chosen per hue: in mono
