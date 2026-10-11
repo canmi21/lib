@@ -11,7 +11,7 @@ a scale of measures, and in time the primitives and the components standing on t
 and half of it is a foundation the other half's behavior has nothing to do with. Renaming it would
 move every app that depends on it at once, so the new system is a package of its own instead, the
 console and space move to it first, and each other consumer moves when there is time -- the site
-and the CMS are web's `spec/issues/site.md` and `spec/issues/cms.md`. Kit is deprecated once
+and the CMS are RFC 4fnln and RFC ei71f. Kit is deprecated once
 nothing reads it -- RFC vnxej. What `@canmi/design` needs of kit's it takes as its own, so it depends on none of
 it: mono's palette was copied rather than imported.
 
