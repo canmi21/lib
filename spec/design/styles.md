@@ -70,11 +70,12 @@ value is for, not who first wanted it.
 CSS's `cap` unit should give and Chrome does not read right from this sans. It names its font,
 since another face's capitals stand at another height.
 
-**The focus ring is information's hue at full OKHSL saturation, a shade off `--status-info`, APCA Lc
-5**, counted before APCA's clip at 10: a shade apart, not a second blue, so a ring drawn on a blue
-mark still reads as a ring. In mono `oklch(0.674 0.173 258.6)` in the light and `oklch(0.543 0.207
-258.6)` in the dark. It is told apart by its lightness, not by a gap around it. Lc 25 and 15 were
-tried first and stood too far off. **There is no `--accent`**: what was the system's own and live is
+**The focus ring is information's hue at full OKHSL saturation, a shade darker than
+`--status-info` in either theme, APCA Lc 5**, counted before APCA's clip at 10: a shade apart, not a
+second blue, so a ring drawn on a blue mark still reads as a ring. In mono `oklch(0.626 0.203
+258.6)` in the light and `oklch(0.543 0.207 258.6)` in the dark. It is told apart by its lightness,
+not by a gap around it. Lc 25 and 15 were tried first and stood too far off; a light shade lighter
+than information's, toward the ground, left the pair twice as far apart as any other hue's. **There is no `--accent`**: what was the system's own and live is
 information's blue, held by `--status-info` as every other status holds its hue. Settled with the
 author on 2026-10-11.
 

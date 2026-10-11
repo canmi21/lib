@@ -53,6 +53,33 @@ as one swatch, and a specimen may hold the two themes side by side, one scope ea
 is a block painted in that theme's base and text: a window onto the other theme. What a reader is
 told about a scope -- a label, a caption -- stands outside it, in the page's theme.
 
+## A card's point runs on from its rule
+
+**A card that points at what it is about does it with one point,
+`@canmi/design/components/point.svelte`**: a triangle of the card's rule, and over it a triangle of
+the card's ground standing in by the rule's width, both from the card's inner edge, the ground's
+reaching a pixel into the card to cover the rule across the opening. The slanted sides run on from
+the card's rule with no step at the joint. **The rule's width is read off the card as the browser
+drew it**, since the browser snaps a rule to whole device pixels -- one at 1.8x, two at 2x -- and a
+width written once would be right on one screen only; the slant takes half a device pixel more,
+because a slanted line smoothed over its neighbors reads thinner than a straight one as wide. Drawn
+first for the console's map card and timeline tip, decided with the author on 2026-10-10, and moved
+here on 2026-10-11.
+
+## A tooltip
+
+**`@canmi/design/components/tooltip.svelte` names what it holds, in as few words as say it**, in a
+small card on the surface above it, its point down at the middle: shown while the pointer rests on
+what it holds or the keyboard is inside it, and never the browser's own `title`, which waits, cannot
+be styled, and is not read the same way by every reader. Its words are a caption's, medium weight,
+in the strong text; what it holds is told of it by `aria-describedby` while it shows. A tooltip
+names; anything a reader would act on belongs in a card of its own. **A pointer that leaves the
+window sends no leave**, so every tip checks, on each `pointerover` the document gets, that the
+element under the pointer is still inside what it holds, and closes when it is not: the first move
+back into the window settles every tip left open. A tip the keyboard opened is held by focus alone
+and closes when focus leaves; **focus counts only where it is `:focus-visible`**, so the focus a
+click leaves on a button holds nothing open once the pointer goes.
+
 ## An error page
 
 **A page that fails is drawn as the site draws one**: the status, a hairline, and a sentence for a

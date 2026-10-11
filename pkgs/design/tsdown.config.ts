@@ -25,10 +25,12 @@ export default defineConfig({
 			to: 'dist/components/icon-button/src',
 		},
 		{ from: 'components/nav-link/src/nav-link.svelte', to: 'dist/components/nav-link/src' },
+		{ from: 'components/point/src/point.svelte', to: 'dist/components/point/src' },
 		{
 			from: 'components/theme-scope/src/theme-scope.svelte',
 			to: 'dist/components/theme-scope/src',
 		},
+		{ from: 'components/tooltip/src/tooltip.svelte', to: 'dist/components/tooltip/src' },
 		{ from: 'layouts/shell/src/shell.svelte', to: 'dist/layouts/shell/src' },
 		{ from: 'components/error-page/src/client.svelte', to: 'dist/components/error-page/src' },
 		{ from: 'components/error-page/src/offer.svelte', to: 'dist/components/error-page/src' },

@@ -47,7 +47,7 @@
 	--interaction-strong: oklch(var(--interaction-tint) 0 0 / calc(var(--interaction-strength) * 1.5));
 	/* The focus ring is information's blue at full OKHSL saturation a shade off it, APCA Lc 5, so a
 	   ring on a blue mark still reads as a ring. */
-	--interaction-focus: oklch(0.674 0.173 258.6);
+	--interaction-focus: oklch(0.626 0.203 258.6);
 
 	/* A hue is pure in both themes, OKHSL saturation at 100, and 9 OKHSL lightness deeper in the
 	   dark than in the light; warning alone keeps one value, already at its brightest pure yellow. */

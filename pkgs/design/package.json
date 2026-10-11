@@ -33,7 +33,9 @@
 		"./components/error-page/offer.svelte": "./dist/components/error-page/src/offer.svelte",
 		"./components/error-page/status.svelte": "./dist/components/error-page/src/status.svelte",
 		"./components/nav-link.svelte": "./dist/components/nav-link/src/nav-link.svelte",
+		"./components/point.svelte": "./dist/components/point/src/point.svelte",
 		"./components/theme-scope.svelte": "./dist/components/theme-scope/src/theme-scope.svelte",
+		"./components/tooltip.svelte": "./dist/components/tooltip/src/tooltip.svelte",
 		"./layouts/shell.svelte": "./dist/layouts/shell/src/shell.svelte",
 		"./scale.stylex": {
 			"types": "./dist/scale/src/scale.stylex.d.ts",
