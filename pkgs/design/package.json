@@ -42,6 +42,7 @@
 			"default": "./dist/scale/src/scale.stylex.js"
 		},
 		"./styles/mono.css": "./dist/styles/src/mono.css",
+		"./styles/mono/palette.css": "./dist/styles/src/mono/palette.css",
 		"./theme": {
 			"types": "./dist/theme/src/index.d.ts",
 			"default": "./dist/theme/src/index.js"

@@ -29,7 +29,9 @@ system reads, and whose test holds every style to it -- each name given a value 
 either theme's mark, and nothing declared outside the contract's groups.
 
 **Mono is the first style, `@canmi/design/styles/mono.css`**, the console's neutral look. It imports
-its palette itself, so an app imports the style and nothing under it.
+its palette itself, so an app imports the style and nothing under it. The palette is exported as well,
+`@canmi/design/styles/mono/palette.css`, for a page that reads the values as text -- space's
+specimens, which write each value where the server renders it -- never for an app to import.
 
 ## A theme is a mark, and any element may carry one
 
