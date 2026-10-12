@@ -80,10 +80,10 @@ style on `::selection`. Why, and what was tried first, is RFC qb7r9.
 style changes colors and never a size. Each is a StyleX const, so a reading declaration keeps the
 value as written. A measure joins when a component on the system first reads it, not before.
 
-- **Type sizes are named for what they set**: `caption`, `label`, `body`, and above them in time
-  `title`, `headline`, `display`. Tailwind already holds the t-shirt sizes for type, with other
-  values -- its `text-sm` is 14px -- and two meanings of one word in files that mix the two would be
-  read wrong; a number named only an order a reader would take for a share of the body.
+- **Type sizes are named for what they set, seven steps**: `caption` 12px, `label` 13px and `body`
+  14px for the interface; `prose` 16px for text to be read; `title` 20px for a section, `headline`
+  24px for a page and `display` 32px for a document and a figure read at a glance. Never a t-shirt
+  size or a number -- RFC wb3ro.
 - **Radii keep the t-shirt sizes, five steps and the pill**: `xs` 2px, `sm` 4px, `md` 6px, `lg`
   8px, `xl` 12px, and `full`, a shape rather than a step. They are Tailwind's `rounded-*` steps at
   Tailwind's values: one word, one value, either way it is read. A radius is the visual layer's,

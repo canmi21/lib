@@ -28,6 +28,14 @@ export const fontSize = stylex.defineConsts({
 	label: '0.8125rem',
 	/** Running text, a link, a name. */
 	body: '0.875rem',
+	/** Text to be read, at the size the reader's browser asks for. */
+	prose: '1rem',
+	/** A section's title. */
+	title: '1.25rem',
+	/** A page's title, or a card's that stands for one. */
+	headline: '1.5rem',
+	/** A document's title, the largest words, and a number read at a glance. */
+	display: '2rem',
 });
 
 /** A line's height to its type, named and valued as Tailwind's `leading-*`. */
