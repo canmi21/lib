@@ -114,6 +114,10 @@ shell's top bar and its sidebar -- and what is set into a region, a field or a f
 on the base again. **A surface casts no shadow in either theme.** Why, and what was tried first, is
 RFC c656n.
 
+**`--background-neutral` is one gray in both themes, CIELAB L\* 50**, halfway between them and
+outside the 1.5 rule; mono's test holds it to both. It is a specimen box's, where the two themes are
+drawn side by side, and never a page's or a component's.
+
 **Two grounds, and every other ground an interaction rank laid over one of them.** A ground that is
 neither the page nor a card -- a hover, a selection, a control's fill, a skeleton -- is a rank: the
 text's own color laid thin, translucent, so it adapts to the ground under it. A component takes a

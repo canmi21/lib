@@ -95,4 +95,9 @@ describe('mono', () => {
 		const ratio = step(read(name, 'dark'), 'dark') / step(read(name, 'light'), 'light');
 		expect(ratio).toBeCloseTo(1.5, 1);
 	});
+
+	it('keeps the neutral at L* 50, one value in both themes', () => {
+		expect(read('--background-neutral', 'dark')).toBe(read('--background-neutral', 'light'));
+		expect(lStar(gray(read('--background-neutral', 'light')).l ** 3)).toBeCloseTo(50, 0);
+	});
 });

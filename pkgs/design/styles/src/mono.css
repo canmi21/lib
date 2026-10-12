@@ -15,6 +15,9 @@
 	   Every other ground is an interaction rank laid on one of these. */
 	--background-base: oklch(0.979 0 0);
 	--background-surface: var(--color-paper);
+	/* The one gray the themes share, CIELAB L* 50, halfway between them: what both stand on where they
+	   stand side by side, so neither reads as the odd one out. Not stepped, and not redeclared below. */
+	--background-neutral: oklch(0.569 0 0);
 
 	/* A border is a share of the foreground's own color rather than a gray of its own, so it sits
 	   as lightly on any background. The dark's share is set, and the light's is the one whose step
