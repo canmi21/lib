@@ -10,17 +10,18 @@
 :root,
 [data-theme='light'],
 [data-theme='dark'] {
-	/* A surface is a step lighter than the base in either theme: in the dark black to 10 levels
-	   above it, in the light a grey 7 levels under white, the dark's step over the ratio below. Every
-	   other ground is an interaction rank laid on one of these. */
+	/* A surface is a step lighter than the base in either theme, the dark's step 1.5 times the
+	   light's in CIELAB L*: in the light a grey under white, in the dark black and a grey above it.
+	   Every other ground is an interaction rank laid on one of these. */
 	--background-base: oklch(0.979 0 0);
 	--background-surface: var(--color-paper);
 
 	/* A border is a share of the foreground's own color rather than a gray of its own, so it sits
-	   as lightly on any background: the dark's share, and the light's it over the ratio below. */
-	--border-subtle: oklch(var(--interaction-tint) 0 0 / var(--interaction-strength));
-	--border-default: oklch(var(--interaction-tint) 0 0 / calc(0.09 / var(--interaction-ratio)));
-	--border-strong: oklch(var(--interaction-tint) 0 0 / calc(0.24 / var(--interaction-ratio)));
+	   as lightly on any background. The dark's share is set, and the light's is the one whose step
+	   in CIELAB L* on the base is the dark's over 1.5; styles.test.ts holds every pair to it. */
+	--border-subtle: oklch(var(--interaction-tint) 0 0 / 0.0417);
+	--border-default: oklch(var(--interaction-tint) 0 0 / 0.0595);
+	--border-strong: oklch(var(--interaction-tint) 0 0 / 0.1965);
 
 	/* Each tier is set by its APCA contrast on a surface, the same in both themes: 60, 75, 90, and
 	   the most there is. */
@@ -29,22 +30,15 @@
 	--foreground-default: oklch(0.412 0 0);
 	--foreground-strong: var(--color-text-strong);
 
-	/* Each rank is the text's own color laid thin, a share of one strength. The dark's strength is
-	   the reference and the light's is it over the ratio, since near black a share reads larger; the
-	   light holds muted further off subtle, where the two would otherwise read as one. */
+	/* Each rank is the text's own color laid thin, the same way: the dark's share set, the light's
+	   its step in CIELAB L* over 1.5. `strength` is the default rank's, for a mark that lays it
+	   opaque. */
 	--interaction-tint: 0;
-	--interaction-ratio: 1.4;
-	--interaction-strength: calc(0.07 / var(--interaction-ratio));
-	--interaction-subtle-share: 0.7;
-	--interaction-muted-share: 0.85;
-	--interaction-subtle: oklch(
-		var(--interaction-tint) 0 0 / calc(var(--interaction-strength) * var(--interaction-subtle-share))
-	);
-	--interaction-muted: oklch(
-		var(--interaction-tint) 0 0 / calc(var(--interaction-strength) * var(--interaction-muted-share))
-	);
+	--interaction-strength: 0.0417;
+	--interaction-subtle: oklch(var(--interaction-tint) 0 0 / 0.0269);
+	--interaction-muted: oklch(var(--interaction-tint) 0 0 / 0.0314);
 	--interaction-default: oklch(var(--interaction-tint) 0 0 / var(--interaction-strength));
-	--interaction-strong: oklch(var(--interaction-tint) 0 0 / calc(var(--interaction-strength) * 1.5));
+	--interaction-strong: oklch(var(--interaction-tint) 0 0 / 0.0743);
 	/* The focus ring is information's blue at full OKHSL saturation a shade off it, APCA Lc 5, so a
 	   ring on a blue mark still reads as a ring. */
 	--interaction-focus: oklch(0.626 0.203 258.6);
@@ -68,7 +62,10 @@
 
 [data-theme='dark'] {
 	--background-base: var(--color-paper);
-	--background-surface: var(--color-page);
+	--background-surface: oklch(0.159 0 0);
+	--border-subtle: oklch(var(--interaction-tint) 0 0 / 0.07);
+	--border-default: oklch(var(--interaction-tint) 0 0 / 0.09);
+	--border-strong: oklch(var(--interaction-tint) 0 0 / 0.24);
 	--foreground-subtle: oklch(0.761 0 0);
 	--foreground-muted: oklch(0.842 0 0);
 	--foreground-default: oklch(0.918 0 0);
@@ -77,8 +74,10 @@
 	--status-info: oklch(0.576 0.219 258.6);
 	--status-critical: oklch(0.625 0.252 23.1);
 	--interaction-tint: 1;
-	--interaction-ratio: 1;
-	--interaction-muted-share: 0.8;
+	--interaction-strength: 0.07;
+	--interaction-subtle: oklch(var(--interaction-tint) 0 0 / 0.049);
+	--interaction-muted: oklch(var(--interaction-tint) 0 0 / 0.056);
+	--interaction-strong: oklch(var(--interaction-tint) 0 0 / 0.105);
 }
 
 /* A selection is the reader's own choice, so it is drawn as focus is: the ring's blue, white on

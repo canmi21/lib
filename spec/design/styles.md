@@ -97,12 +97,19 @@ the gap between them, whatever value that comes to, a pixel included, so the two
 parallel. Where that is zero or less the two stand too far apart to nest, and the inner holds a step
 of its own.
 
-A style may derive its values from parameters no component reads: mono's hover and selection are
-one tint of the foreground, `--interaction-tint`, at `--interaction-strength` and a share of it.
+A style may derive its values from parameters no component reads: mono's ranks and borders are one
+tint of the foreground, `--interaction-tint`, and `--interaction-strength` is the default rank's
+alpha, for a mark that lays that rank opaque.
 
-**A surface is a step lighter than the base in both themes, and the light's step is the dark's over
-the ratio.** The dark's base is black and its surface 10 levels above it; the light's surface is
-white and its base 7 levels under, `oklch(0.979 0 0)`. Regions take the surface -- a card, the
+**Every gray but the text steps off its base 1.5 times as far in the dark as in the light, measured
+in CIELAB L\*.** The light's grounds and the dark's ranks and borders are set and the other side is
+worked out, each on its own base, and each value is written out since CSS cannot take L\*; mono's
+test reads its stylesheet and holds every pair to the ratio. sRGB levels are an encoding and oklch
+L a cube root all the way to black, and neither reads as the eye does near black -- RFC trwdn.
+
+**A surface is a step lighter than the base in both themes.** The light's surface is white and its
+base `oklch(0.979 0 0)`; the dark's base is black and its surface `oklch(0.159 0 0)`, its step the
+light's times 1.5 in L\*. Regions take the surface -- a card, the
 shell's top bar and its sidebar -- and what is set into a region, a field or a framed button, stands
 on the base again. **A surface casts no shadow in either theme.** Why, and what was tried first, is
 RFC c656n.
@@ -110,22 +117,23 @@ RFC c656n.
 **Two grounds, and every other ground an interaction rank laid over one of them.** A ground that is
 neither the page nor a card -- a hover, a selection, a control's fill, a skeleton -- is a rank: the
 text's own color laid thin, translucent, so it adapts to the ground under it. A component takes a
-rank, never a share. The ranks in mono are shares of one strength:
+rank, never an alpha of its own. The ranks in mono, as the alpha of the text's color laid on:
 
-| rank      | light | dark |
-| --------- | ----- | ---- |
-| `subtle`  | 0.7   | 0.7  |
-| `muted`   | 0.85  | 0.8  |
-| `default` | 1     | 1    |
-| `strong`  | 1.5   | 1.5  |
+| rank      | light        | dark         |
+| --------- | ------------ | ------------ |
+| `subtle`  | 2.69 percent | 4.9 percent  |
+| `muted`   | 3.14 percent | 5.6 percent  |
+| `default` | 4.17 percent | 7 percent    |
+| `strong`  | 7.43 percent | 10.5 percent |
 
-**The dark's strength is 7 percent, and the light's is it over `--interaction-ratio`, 1.4.** **Where
+**The dark's are set, and the light's each stand 1/1.5 as far off the base in L\*.** **Where
 something chosen stands among what can be pointed at, the chosen takes `muted` and the hover
 `subtle`; where only a hover shows, it takes `default`.** Why, and what was tried first, is RFC
 ic4cd.
 
-**A border is the text's own color laid thin too, by the same ratio**: `subtle` the ranks' full
-strength, `default` 9 percent in the dark and `strong` 24, the light's each over 1.4 -- RFC h27v0.
+**A border is the text's own color laid thin too, by the same rule**: in the dark `subtle` 7
+percent, `default` 9 and `strong` 24, and in the light 4.17, 5.95 and 19.65 -- RFC h27v0 for what a
+border is, RFC trwdn for the ratio.
 
 **Text is set by its APCA contrast on a surface, one target per tier in both themes**: `subtle` Lc
 60, `muted` 75, `default` 90, `strong` the most there is, black or white, and each theme's lightness
