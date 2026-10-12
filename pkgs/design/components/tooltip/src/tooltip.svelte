@@ -39,7 +39,6 @@
 	const shown = $derived(hovered || focused);
 	let anchor: HTMLElement | undefined = $state();
 	let card: HTMLElement | undefined = $state();
-	let width = $state(0);
 	const id = $props.id();
 
 	const styles = stylex.create({
@@ -90,13 +89,7 @@
 >
 	{@render children()}
 	{#if shown}
-		<span
-			{id}
-			role="tooltip"
-			bind:this={card}
-			bind:clientWidth={width}
-			class={stylex.attrs(styles.card).class}
-		>
+		<span {id} role="tooltip" bind:this={card} class={stylex.attrs(styles.card).class}>
 			{#if content}
 				{@render content()}
 			{:else}
@@ -105,7 +98,7 @@
 				{/if}
 				{label}
 			{/if}
-			<Point {card} edge="bottom" along={width / 2} size={POINT} />
+			<Point {card} edge="bottom" along="middle" size={POINT} />
 		</span>
 	{/if}
 </span>

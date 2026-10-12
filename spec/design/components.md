@@ -73,12 +73,18 @@ small card on the surface above it, its point down at the middle: shown while th
 what it holds or the keyboard is inside it, and never the browser's own `title`, which waits, cannot
 be styled, and is not read the same way by every reader. Its words are a caption's, medium weight,
 in the strong text; what it holds is told of it by `aria-describedby` while it shows. A tooltip
-names; anything a reader would act on belongs in a card of its own. **A pointer that leaves the
-window sends no leave**, so every tip checks, on each `pointerover` the document gets, that the
-element under the pointer is still inside what it holds, and closes when it is not: the first move
-back into the window settles every tip left open. A tip the keyboard opened is held by focus alone
-and closes when focus leaves; **focus counts only where it is `:focus-visible`**, so the focus a
-click leaves on a button holds nothing open once the pointer goes.
+names; anything a reader would act on belongs in a card of its own. **A tip is for a mark that says
+less than its name**, a swatch or an icon with nothing beside it; where the name already stands next
+to what it holds, nothing shows on the pointer and the mark keeps its own action. **Marks with tips
+in a row share the gaps between them**: each takes half of the gap on either side as its own,
+unseen, so the pointer crossing the row never falls between two and the tip follows it without a
+break. Its point stands at the card's middle as the browser places it, never measured, so it is
+right from the first frame. **A pointer that leaves the window sends no leave**, so every tip
+checks, on each `pointerover` the document gets, that the element under the pointer is still inside
+what it holds, and closes when it is not: the first move back into the window settles every tip left
+open. A tip the keyboard opened is held by focus alone and closes when focus leaves; **focus counts
+only where it is `:focus-visible`**, so the focus a click leaves on a button holds nothing open once
+the pointer goes. Why, and what was tried first, is RFC 0qssu.
 
 ## An error page
 

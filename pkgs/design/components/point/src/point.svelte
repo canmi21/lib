@@ -22,8 +22,8 @@
 		card: HTMLElement | undefined;
 		/** Which of the card's edges it stands out from. */
 		edge: 'top' | 'bottom' | 'left' | 'right';
-		/** How far along that edge its middle is, in pixels. */
-		along: number;
+		/** How far along that edge its middle is, in pixels, or `middle` for the edge's own middle. */
+		along: number | 'middle';
 		/** Placed in a box the card's outer edge bounds, rather than inside the card itself. */
 		outside?: boolean;
 		/** How far it stands out, half as far as it is wide. */
@@ -52,9 +52,11 @@
 	function placed(long: number, out: number, reach: number): string {
 		const from = `calc(100% - ${reach + base}px)`;
 		const across = edge === 'top' || edge === 'bottom';
+		// The edge's middle set by the browser, never measured, so it is right from the first frame.
+		const at = along === 'middle' ? '50%' : `${along}px`;
 		const size = across
-			? `width:${long}px;height:${out + reach}px;left:${along}px;transform:translateX(-50%);`
-			: `width:${out + reach}px;height:${long}px;top:${along}px;transform:translateY(-50%);`;
+			? `width:${long}px;height:${out + reach}px;left:${at};transform:translateX(-50%);`
+			: `width:${out + reach}px;height:${long}px;top:${at};transform:translateY(-50%);`;
 		const r = `${reach}px`;
 		const shapes = {
 			bottom: `top:${from};clip-path:polygon(0 0,100% 0,100% ${r},50% 100%,0 ${r})`,
@@ -73,5 +75,9 @@
 ></span>
 <span
 	aria-hidden="true"
-	style="position:absolute;{placed(size * 2 - 2 * slant, size - slant, 1)};background-color:{ground}"
+	style="position:absolute;{placed(
+		size * 2 - 2 * slant,
+		size - slant,
+		1,
+	)};background-color:{ground}"
 ></span>
