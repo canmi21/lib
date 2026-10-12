@@ -84,10 +84,18 @@ value as written. A measure joins when a component on the system first reads it,
   `title`, `headline`, `display`. Tailwind already holds the t-shirt sizes for type, with other
   values -- its `text-sm` is 14px -- and two meanings of one word in files that mix the two would be
   read wrong; a number named only an order a reader would take for a share of the body.
-- **Radii keep the t-shirt sizes**, `sm` to `xl` and `full`, since they are Tailwind's `rounded-*`
-  steps at Tailwind's values: one word, one value, either way it is read.
+- **Radii keep the t-shirt sizes, five steps and the pill**: `xs` 2px, `sm` 4px, `md` 6px, `lg`
+  8px, `xl` 12px, and `full`, a shape rather than a step. They are Tailwind's `rounded-*` steps at
+  Tailwind's values: one word, one value, either way it is read. A radius is the visual layer's,
+  written in StyleX and never as a `rounded-*` class.
 - **Weights are `regular`, `medium`, `semibold`; a border's width is `hairline`; a transition's
   length is `duration.base`.**
+
+**Of two corners nested, one holds a step and the other is worked out from it.** The one that holds
+is the outer by default, since a container is what is tuned; the inner's radius is the outer's less
+the gap between them, whatever value that comes to, a pixel included, so the two curves run
+parallel. Where that is zero or less the two stand too far apart to nest, and the inner holds a step
+of its own.
 
 A style may derive its values from parameters no component reads: mono's hover and selection are
 one tint of the foreground, `--interaction-tint`, at `--interaction-strength` and a share of it.

@@ -7,8 +7,12 @@
 
 import * as stylex from '@stylexjs/stylex';
 
-/** A corner's rounding, smallest to the pill; the same steps and values as Tailwind's `rounded-*`. */
+/**
+ * A corner's rounding, five steps and the pill; the same steps and values as Tailwind's
+ * `rounded-*`. One of two corners nested is worked out from the other, spec/design/styles.md.
+ */
 export const radius = stylex.defineConsts({
+	xs: '0.125rem',
 	sm: '0.25rem',
 	md: '0.375rem',
 	lg: '0.5rem',
