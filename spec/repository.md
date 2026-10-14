@@ -54,7 +54,8 @@ trusted publisher only to a package that exists; the first dated version is the 
 published by hand until it has a pipeline of its own**: `whereabouts` began at 1.0.0, `response`
 and `@canmi/response` at 2.0.0, the next major of the crate's own line, and `axum-governor` keeps the line
 it already had. The two halves of `response` share one version,
-since they share one `codes.json`.
+since they share one `codes.json` -- **which holds only the codes any HTTP API answers whatever it
+does**; a service's own codes are its own, in its contract, and never added here. RFC v7g2p.
 
 **A file two halves share lives in the npm package and is linked into the crate**: `cargo package`
 takes only what is under the crate's own directory, and follows a symbolic link to copy what it
