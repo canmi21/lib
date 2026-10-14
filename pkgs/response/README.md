@@ -36,6 +36,9 @@ Every answer is one of two shapes:
 - **Plain `Response`** — `success` and `failure` return a Web `Response`, for Workers, Hono,
   SvelteKit or anything else that speaks fetch. A failure is `no-store` unless you say otherwise.
 - **One way back** — `unwrap` returns the data, or throws with the code and the message.
+- **Hono** — `envelopeErrors(app)` from `@canmi/response/hono` answers a path no route takes and an
+  error thrown below a route in the envelope rather than Hono's plain text. `hono` is an optional
+  peer, needed only for this subpath.
 
 ## License
 

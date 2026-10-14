@@ -40,12 +40,20 @@ Every answer is one of two shapes:
   one up, and `Envelope::error` fills the message in for you.
 - **Axum helpers** — `success`, `failure` and `failure_with` turn a status and data, or a code,
   into a response.
+- **One way back** — `decode` reads an answer's body into its data, or a `DecodeError` naming the
+  refusal's code or saying the body was no envelope; `Envelope::into_result` does the same for an
+  envelope already read.
+- **A one-line catalog test** — `assert_cataloged(&[include_str!("api.rs")])` fails naming every
+  code a source answers with that the catalog lacks.
+- **A service's own codes** — `Codes::from_json` reads a `codes.json` of `{ status, message }` per
+  code, for codes no other API answers; `Codes::failure` answers one with its own status, and
+  `assert_well_formed` and `assert_declared` are the tests that hold it.
 
 ## Cargo features
 
-| Feature | Default | Description                                               |
-| ------- | ------- | --------------------------------------------------------- |
-| `axum`  | No      | `success`, `failure` and `failure_with` for Axum handlers |
+| Feature | Default | Description                                                                     |
+| ------- | ------- | ------------------------------------------------------------------------------- |
+| `axum`  | No      | `success`, `failure` and `failure_with` for Axum handlers, and `Codes::failure` |
 
 Without `axum` the crate is the envelope and the catalog alone, on `serde` and `serde_json`.
 

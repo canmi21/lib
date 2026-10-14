@@ -1,6 +1,6 @@
 {
 	"name": "@canmi/response",
-	"version": "2.1.0",
+	"version": "2.2.0",
 	"description": "One response envelope, for TypeScript.",
 	"keywords": [
 		"api",
@@ -25,9 +25,24 @@
 			"types": "./dist/src/index.d.ts",
 			"default": "./dist/src/index.js"
 		},
+		"./hono": {
+			"types": "./dist/src/hono.d.ts",
+			"default": "./dist/src/hono.js"
+		},
 		"./package.json": "./package.json"
 	},
 	"scripts": {
 		"build": "tsdown"
+	},
+	"devDependencies": {
+		"hono": "^4.13.12"
+	},
+	"peerDependencies": {
+		"hono": "^4.13.12"
+	},
+	"peerDependenciesMeta": {
+		"hono": {
+			"optional": true
+		}
 	}
 }

@@ -22,6 +22,34 @@ could not be reached or read at this moment, and `forbidden_*` for a request tha
 refused to this caller -- a 403, where `invalid_*` is a 400. `rate_limited` and `job_running` are the codes
 outside them.
 
+## A client reads an answer one way
+
+**The envelope is decoded in one place, in each language**: `decode` in the crate, into the data a
+success carries or a `DecodeError` that is either the refusal, its code and message, or a body that
+was no envelope; `unwrap` in the package, which throws with the same. What the data must look like
+is the caller's type; the envelope's reader knows `status` and nothing else. A program does not
+write its own.
+
+## A program's tests hold what it answers to the catalog in one line
+
+`assert_cataloged(&[include_str!("api.rs")])` finds every code a source answers beside a status and
+fails naming each the catalog lacks; TypeScript has the `Code` type instead.
+
+## A service's own codes are read the same way the catalog is
+
+A code only one service answers is declared in that service's `codes.json`,
+`{ "<code>": { "status": <4xx or 5xx>, "message": ... } }`, never added here -- RFC v7g2p. `Codes`
+reads it, answers with its status and message, and gives the two tests every such service runs:
+`assert_well_formed`, that no code is the catalog's already and each reads as this file says a code
+and a message read, and `assert_declared`, that every code the sources name is declared.
+
+## A Hono API answers its own refusals in the envelope
+
+`@canmi/response/hono`'s `envelopeErrors(app)` answers a path no route takes, `no_such_route`
+unless the app names another, and an error thrown below a route, `service_unavailable`, each
+`no-store` unless the app says more. Hono's own answer is `text/plain`, which a caller parsing JSON
+reads as a syntax error rather than a message.
+
 ## `codes.json` lives in the npm package and is linked into the crate
 
 `cargo package` takes only what is under the crate's own directory, and follows a symbolic link to
