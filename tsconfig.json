@@ -1,5 +1,5 @@
 {
-	// One program over every package's TypeScript; each package's build declares its own types
+	// One program over every package's TypeScript and the tasks written in it; each package's build declares its own types
 	// from the same files. The `.svelte` component is Svelte's to check, not this program's.
 	"compilerOptions": {
 		"target": "es2023",
@@ -20,6 +20,6 @@
 		"lib": ["es2023", "dom", "dom.iterable"],
 		"types": ["node"]
 	},
-	"include": ["pkgs/**/*.ts"],
+	"include": ["pkgs/**/*.ts", ".mise/tasks/**/*.ts"],
 	"exclude": ["**/node_modules", "**/dist"]
 }

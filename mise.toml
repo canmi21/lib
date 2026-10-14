@@ -9,17 +9,24 @@ description = "Lint every crate at both feature extremes, warnings denied"
 run = [
 	"cargo clippy --all-targets --all-features -- -D warnings",
 	"cargo clippy --all-targets --no-default-features -- -D warnings",
-	'oxlint pkgs ${AUDIT:+--deny-warnings}',
+	'oxlint pkgs .mise/tasks ${AUDIT:+--deny-warnings}',
 ]
 
 [tasks.test]
-description = "Run every crate's tests at both feature extremes, and every package's"
+description = "Run every crate's tests at both feature extremes, every package's, and the consumers' lib-local's"
 run = ["cargo test --all-features", "cargo test --no-default-features", "pnpm exec vitest run"]
 
 # What is published is what this builds, so a package that does not build is a failed change.
+# `--watch` is for a consumer's `mise run lib-local --link`, which reads each package's dist/: every
+# package is built once in dependency order, then each is rebuilt as it changes, in the foreground.
+# See spec/repository.md, "Trying a change before it is released".
 [tasks.build]
-description = "Build every package into its dist/"
-run = "pnpm -r run build"
+description = "Build every package into its dist/: `build [--watch]`, the second for a consumer's `lib-local --link`"
+usage = 'flag "-w --watch" help="Build every package, then rebuild each as it changes"'
+run = '''
+pnpm -r run build
+[ -z "${usage_watch:-}" ] || exec pnpm -r --parallel run build --watch
+'''
 
 [tasks.verify]
 description = "Everything a change has to pass"
@@ -28,7 +35,7 @@ depends = ["check", "lint", "test", "build"]
 # The local registry `release --local` publishes to and a consumer here installs from, in the
 # foreground; see spec/repository.md, "Trying a change before it is released".
 [tasks.registry]
-description = "Serve the local registry on localhost:4873, for changes not released yet"
+description = "Serve the local registry on localhost:4873, to check what a release would publish before it does; iterate with `build --watch` instead"
 run = "pnpm exec verdaccio --config verdaccio.yaml"
 
 # The Rust half of `canmi` is rendered from its TypeScript, so an address is written once.

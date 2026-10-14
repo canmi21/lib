@@ -88,14 +88,26 @@ not strip types inside `node_modules`, so nothing is published as TypeScript.
 
 ## Trying a change before it is released
 
-**A change is tried in a consumer through a local registry, before it is pushed**: `mise run
-registry` serves Verdaccio on `localhost:4873`, configured by `verdaccio.yaml` and keeping what it
-holds under `target/verdaccio/`, and fetches from npm whatever it does not hold, so a consumer
-pointed at it installs everything else as it would anyway. `mise run release --local` publishes
-every npm package to it, changed or not and committed or not, under the `local` tag.
+**A change is iterated on in a consumer by linking it, and checked once through a local registry,
+before it is pushed.** `mise run build --watch` builds every package into its `dist/` once, in
+dependency order, then rebuilds each as it changes; a consumer's `mise run lib-local --link` points
+each `@canmi/*` package it names at that package's directory here, by a `link:` override in its
+`pnpm-workspace.yaml`, so a change is seen there as soon as it is rebuilt, with nothing published
+and no version moved. Each app's Vite config dedupes `svelte`, `@sveltejs/kit` and
+`@sentry/sveltekit`, which a linked package would otherwise resolve from this checkout's
+`node_modules`, a second copy beside the app's. For a last look at what a published tarball holds,
+`mise run registry` serves Verdaccio on `localhost:4873`, configured by `verdaccio.yaml` and keeping
+what it holds under `target/verdaccio/`, and fetches from npm whatever it does not hold, so a
+consumer pointed at it installs everything else as it would anyway; `mise run release --local`
+publishes every npm package to it, changed or not and committed or not, under the `local` tag, and
+a consumer's `mise run lib-local` without `--link` installs those.
 
 **A local version is the next release's, with `-local.N` after it** -- `2026.1004.2-local.0`,
 `2.0.1-local.3` -- so it is never a version npm holds, and it sorts below the release it precedes.
 N is one past the highest the registry holds for that release. Nothing is tagged and no crate is
-published: a consumer takes the crates from this checkout by a `[patch]`, as web's
-`mise run lib-local` does.
+published: a consumer takes the crates from this checkout by a `[patch]`, in either mode.
+
+**`lib-local` is written once, here**: `.mise/tasks/consumer/lib-local.ts`, run by node with the
+consumer's root by the shim each consumer keeps as its `.mise/tasks/lib-local`, so web, infra and
+platform run one copy -- RFC zlifc. Its tests, `lib-local.test.ts` beside it, run in this
+repository's `mise run test`, and `mise run check` type-checks it with the packages.
