@@ -73,7 +73,10 @@ A version shows only where a fingerprint reads one.
   Svelte page uses -- never sets. Wappalyzer still lists Motion under its old name, Framer Motion.
 - **Every Hono app names itself with `poweredBy()` from `@canmi/web/disclose/hono`**, the first
   middleware it registers. Hono's own sets the header in place and throws on an answer passed
-  through from a `fetch`, whose headers are immutable; this one copies such an answer first.
+  through from a `fetch`, whose headers are immutable; this one copies such an answer first. **A
+  stream passed through is answered ahead of it and named by nothing**: on Workers a copy is
+  decoded and compressed again by the runtime, whose compressor holds a stream's small events, so
+  the console's `live` stream goes out as fetched -- web's `spec/architecture/console.md`.
 - **Hono's header goes on the site's pages too, not only its API**, because Wappalyzer reads
   headers from the page's own response alone and only the host of a request the page makes. The
   Worker that serves the page answers its API with Hono.
