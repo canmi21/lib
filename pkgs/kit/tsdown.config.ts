@@ -30,6 +30,7 @@ export default defineConfig({
 	dts: true,
 	outExtensions: () => ({ js: '.js', dts: '.d.ts' }),
 	copy: [
+		{ from: 'theme/src/turn.css', to: 'dist/theme/src' },
 		{ from: 'theme/src/palettes/concrete.css', to: 'dist/theme/src/palettes' },
 		{ from: 'theme/src/palettes/mono.css', to: 'dist/theme/src/palettes' },
 		{ from: 'theme/src/palettes/nord.css', to: 'dist/theme/src/palettes' },

@@ -1,0 +1,28 @@
+/* The wipe a theme turns with when nobody pressed for it: the system's preference moving, or the
+   sun rising or setting, under a page already read. The script sets `theme-turn` on the root for
+   the one transition, so a view transition anything else starts is left as it was. The new color
+   is drawn over the old from the side it comes from, dark down from the top and light up from the
+   bottom. See spec/kit/theme.md, "A change nobody pressed for turns, every other cuts". */
+.theme-turn::view-transition-old(root) {
+	animation: none;
+}
+
+.theme-turn::view-transition-new(root) {
+	--turn-from: inset(100% 0 0 0);
+	animation: theme-turn 800ms ease-in-out both;
+	/* The default blends the two snapshots for a cross-fade; a wipe covers one with the other. */
+	mix-blend-mode: normal;
+}
+
+.theme-turn.dark::view-transition-new(root) {
+	--turn-from: inset(0 0 100% 0);
+}
+
+@keyframes theme-turn {
+	from {
+		clip-path: var(--turn-from);
+	}
+	to {
+		clip-path: inset(0);
+	}
+}

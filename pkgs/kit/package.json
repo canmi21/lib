@@ -24,6 +24,7 @@
 			"types": "./dist/theme/src/index.d.ts",
 			"default": "./dist/theme/src/index.js"
 		},
+		"./theme/turn.css": "./dist/theme/src/turn.css",
 		"./theme/palettes/concrete.css": "./dist/theme/src/palettes/concrete.css",
 		"./theme/palettes/mono.css": "./dist/theme/src/palettes/mono.css",
 		"./theme/palettes/nord.css": "./dist/theme/src/palettes/nord.css",
