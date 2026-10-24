@@ -1,4 +1,5 @@
 import { afterEach, describe, expect, it, vi } from 'vitest';
+import { record } from '../../behavior/src/state';
 import { inlineScriptString } from './inline-script';
 import {
 	applyTheme,
@@ -12,6 +13,7 @@ import {
 	observeTheme,
 	paintOf,
 	parseTheme,
+	pressTheme,
 	settleTheme,
 	sunOf,
 	sunTheme,
@@ -429,5 +431,60 @@ describe('observeTheme', () => {
 		expect(seen).toEqual(['dark']);
 		stop();
 		expect(disconnected).toBe(true);
+	});
+});
+
+describe('pressTheme', () => {
+	afterEach(() => vi.unstubAllGlobals());
+
+	/** A document whose cookie and root the press writes, under a system of the given color. */
+	function pressing(cookie: string, systemDark: boolean) {
+		const jar = { value: cookie };
+		const classes = new Set<string>(systemDark ? ['dark'] : []);
+		vi.stubGlobal('document', {
+			get cookie() {
+				return jar.value;
+			},
+			set cookie(line: string) {
+				jar.value = line.split(';')[0] ?? '';
+			},
+			documentElement: {
+				classList: {
+					contains: (name: string) => classes.has(name),
+					toggle: (name: string, on: boolean) => (on ? classes.add(name) : classes.delete(name)),
+				},
+			},
+		});
+		vi.stubGlobal('window', { matchMedia: () => ({ matches: systemDark }) });
+		const items = new Map<string, string>();
+		const storage = {
+			getItem: (key: string) => items.get(key) ?? null,
+			setItem: (key: string, value: string) => void items.set(key, value),
+		};
+		return { jar, classes, items, storage };
+	}
+
+	const tab = record('state', []);
+	const pressed = { record: tab, key: 'theme.pressed' };
+
+	it('keeps whether the tab has pressed in the record it is given, as a boolean', () => {
+		const page = pressing('theme=dark&mode=fixed', true);
+		// The first press from the system's own color fixed skips to the opposite.
+		expect(pressTheme('dark', pressed, page.storage)).toBe('light');
+		expect(JSON.parse(page.items.get('state') ?? '{}')).toEqual({
+			version: 1,
+			'theme.pressed': true,
+		});
+		expect(page.jar.value).toBe('theme=light&mode=fixed');
+		expect(page.classes.has('dark')).toBe(false);
+		// Once pressed, the tab walks the ring in order.
+		expect(pressTheme('light', pressed, page.storage)).toBe('dark');
+		expect(pressTheme('dark', pressed, page.storage)).toBe('sun');
+	});
+
+	it('walks the ring at once in a tab that already pressed', () => {
+		const page = pressing('theme=dark&mode=fixed', true);
+		tab.remember(page.storage, 'theme.pressed', true);
+		expect(pressTheme('dark', pressed, page.storage)).toBe('sun');
 	});
 });

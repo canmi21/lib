@@ -11,6 +11,7 @@ import {
 	type Theme,
 } from './choice.ts';
 import type { Sun } from './sun.ts';
+import type { Container, Store } from '../../behavior/src/state.ts';
 
 export * from './choice.ts';
 export * from './sun.ts';
@@ -125,38 +126,38 @@ export function choiceCookie(stored: Stored): string {
 	return `theme=${themeValue(stored)}${COOKIE_ATTRIBUTES}`;
 }
 
-/** Whether this tab has pressed the control yet; a storage that throws counts as never. */
-const PRESSED = 'theme-pressed';
-function pressedBefore(): boolean {
-	try {
-		return window.sessionStorage.getItem(PRESSED) === '1';
-	} catch {
-		return false;
-	}
-}
-function rememberPress(): void {
-	try {
-		window.sessionStorage.setItem(PRESSED, '1');
-	} catch {
-		// A tab that cannot remember treats every press as its first, which only skips a choice.
-	}
+/**
+ * Where a project keeps whether this tab has pressed the control yet: its per-tab record and a
+ * flat key in it, never a key of this module's own. See spec/kit/state.md.
+ */
+export interface Pressed {
+	/** The project's record paired with `sessionStorage`. */
+	record: Container;
+	key: string;
 }
 
 /**
- * Move the control from `current` to the next choice: paint it, write the cookie, and return the
- * choice to show. The cookie is read afresh for the sun's times the server last wrote.
+ * Move the control from `current` to the next choice: paint it, write the cookie, mark the tab as
+ * having pressed, and return the choice to show. The cookie is read afresh for the sun's times the
+ * server last wrote.
  */
-export function pressTheme(current: Choice, now: Date = new Date()): Choice {
+export function pressTheme(
+	current: Choice,
+	pressed: Pressed,
+	storage: Store,
+	now: Date = new Date(),
+): Choice {
 	const match = /(?:^|;\s*)theme=([^;]*)/.exec(document.cookie);
 	const sun = parseTheme(match ? decodeURIComponent(match[1] ?? '') : undefined)?.sun;
 	const system: Theme = window.matchMedia(SYSTEM_DARK_QUERY).matches ? 'dark' : 'light';
 	const day = sunTheme(sun, now);
-	const choice = nextChoice(current, system, day, !pressedBefore());
+	const first = !pressed.record.recall(storage, pressed.key, false);
+	const choice = nextChoice(current, system, day, first);
 	const theme = paintOf(choice, system, day);
 	const mode = choice === 'system' || choice === 'sun' ? choice : 'fixed';
 	applyTheme(theme);
 	document.cookie = choiceCookie(sun ? { theme, mode, sun } : { theme, mode });
-	rememberPress();
+	pressed.record.remember(storage, pressed.key, true);
 	return choice;
 }
 

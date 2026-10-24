@@ -43,8 +43,10 @@ moon or a sun for the color fixed, a sun and moon -- so the glyph depends on the
 the server always draws it right. Two of the four may paint the same color, so **the first press
 in a session skips every choice that would paint what is already painted**, and a reader who meant
 to change the color sees it change; the presses after it walk the ring in order, so every choice
-can be reached, the one that only moves the glyph coming last. `nextChoice` is that rule, and
-`sessionStorage` holds whether this tab has pressed yet.
+can be reached, the one that only moves the glyph coming last. `nextChoice` is that rule.
+**Whether this tab has pressed yet is a boolean in the project's per-tab record**, handed to
+`pressTheme` with its key and its storage like every fact a kit module keeps, never a key of the
+theme's own; see [state.md](state.md).
 
 `palette` is a second cookie that only the script reads: `nord` or `contrast`, added as a class.
 Nothing writes it and no stylesheet answers either class yet, so it paints nothing -- a leftover the
