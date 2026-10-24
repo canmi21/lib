@@ -28,10 +28,12 @@ jobs:
     runs-on: ubuntu-24.04-arm
     steps:
       # The workspace above the project, as it is checked out at home: its mise.toml pins the
-      # tools and its rust-toolchain.toml the compiler.
+      # tools and its rust-toolchain.toml the compiler. Pinned to the workspace this repository was
+      # last built against, whose layout holds it at repos/lib, until the workspace is rebuilt.
       - uses: actions/checkout@v7
         with:
           repository: canmi21/canmi
+          ref: 85779eec15c1bd842a0197fa8861ebff5627cdee
       - uses: actions/checkout@v7
         with:
           path: repos/lib
